@@ -1,6 +1,7 @@
 package com.rvbraga.provider.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.UUID;
 
 import jakarta.persistence.Entity;
@@ -21,6 +22,7 @@ public class Produto implements Serializable{
 	private String nome;
 	private String unidade_medida;
 	private float ajuste_medida;
+	private LocalDate validade;
 	@ManyToOne
     @JoinColumn(name = "fornecedor_id", nullable = false)
     private Fornecedor fornecedor;

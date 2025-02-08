@@ -1,5 +1,12 @@
 package com.rvbraga.provider.repository;
 
-public interface EnderecoRepository {
+import java.util.UUID;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.rvbraga.provider.model.Endereco;
+@Repository
+public interface EnderecoRepository extends JpaRepository<Endereco, UUID>{
 
 }
