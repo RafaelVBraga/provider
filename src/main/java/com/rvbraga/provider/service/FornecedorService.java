@@ -1,5 +1,6 @@
 package com.rvbraga.provider.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -18,10 +19,11 @@ public class FornecedorService {
 	public List<Fornecedor>findAll(){
 		return fornecedorRepo.findAll();
 	}
-	public Optional<Fornecedor> findById(UUID id) {
-		return fornecedorRepo.findById(id);
+	public Fornecedor findById(UUID id) {
+		return fornecedorRepo.findById(id).orElse(null);
 	}
 	public Fornecedor save(Fornecedor fornecedor) {
+		fornecedor.setDataRegistro(LocalDate.now());
 		return fornecedorRepo.saveAndFlush(fornecedor);
 	}
 	public void delete(UUID id) {

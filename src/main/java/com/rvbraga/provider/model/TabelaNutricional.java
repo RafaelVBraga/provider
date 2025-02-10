@@ -16,7 +16,7 @@ import jakarta.persistence.MapKeyColumn;
 import lombok.Data;
 
 @Data@Entity
-public class tabelaNutricional implements Serializable{
+public class TabelaNutricional implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	@Id@GeneratedValue(strategy = GenerationType.UUID)

@@ -2,8 +2,12 @@ package com.rvbraga.provider.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -26,6 +30,7 @@ public class Fornecedor implements Serializable{
 	private LocalDate dataRegistro;
 	private String telefone;
 	private String email;
-	@OneToMany(mappedBy = "fornecedor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<Produto> produtos;
+	@JsonIgnoreProperties("produtos")
+	@OneToMany(mappedBy = "fornecedor", cascade = CascadeType.ALL, fetch = FetchType.LAZY,orphanRemoval = true)
+	private List<Produto> produtos;
 }

@@ -2,6 +2,7 @@ package com.rvbraga.provider.model;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 import jakarta.persistence.CollectionTable;
@@ -12,6 +13,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.MapKeyColumn;
 import lombok.Data;
 
@@ -27,5 +29,7 @@ public class Refeicao  implements Serializable{
     @MapKeyColumn(name = "prod_key")
     @Column(name = "prod_value")
 	private HashMap<String,Float> ingredientes;
+	@ManyToMany(mappedBy = "refeicoes")
+	private List<Cardapio> cardapios;
 
 }
