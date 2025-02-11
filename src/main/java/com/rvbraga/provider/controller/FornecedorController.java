@@ -36,7 +36,7 @@ public class FornecedorController {
         return new ResponseEntity<>(fornecedor, HttpStatus.OK);
     }
 
-    @PostMapping 
+    @PostMapping("/add") 
     public ResponseEntity<Fornecedor> saveFornecedor(@RequestBody Fornecedor fornecedor) {
     
     	Fornecedor savedFornecedor = fornecedorRepository.save(fornecedor);

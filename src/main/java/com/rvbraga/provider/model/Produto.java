@@ -2,17 +2,20 @@ package com.rvbraga.provider.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 @Entity
@@ -29,6 +32,9 @@ public class Produto implements Serializable{
 	@JsonIgnoreProperties("produtos")
 	@ManyToOne
     @JoinColumn(name = "fornecedor_id", nullable = false)
-    private Fornecedor fornecedor;
+    private Fornecedor fornecedor;	
+	
+	@OneToMany(mappedBy = "produtoProgramaId.produto", cascade = CascadeType.ALL)
+    private List<ProdutoPrograma> programas = new ArrayList<>();
 	
 }

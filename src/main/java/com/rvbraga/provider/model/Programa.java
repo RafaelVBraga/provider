@@ -1,20 +1,18 @@
 package com.rvbraga.provider.model;
 
 import java.io.Serializable;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-import jakarta.persistence.CollectionTable;
-import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.MapKeyColumn;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 @Data
@@ -28,19 +26,8 @@ public class Programa implements Serializable{
 	@ManyToMany(mappedBy = "programas")
     private Set<Escola> escolas;
 	
-	//Esse atributo guardará informação a percapita de todos os produtos
-	@ElementCollection
-    @CollectionTable(name = "programa_percapita", joinColumns = @JoinColumn(name = "programa_id"))
-    @MapKeyColumn(name = "percapita_key")
-    @Column(name = "percapita_value")
-	private HashMap<String, Float> percapita;
-	
-	//Esse atributo guardará informação a frequencia de todos os produtos
-	@ElementCollection
-    @CollectionTable(name = "programa_frequencia", joinColumns = @JoinColumn(name = "programa_id"))
-    @MapKeyColumn(name = "frequencia_key")
-    @Column(name = "frequencia_value")
-	private HashMap<String, Float> frequencia;
+	@OneToMany(mappedBy = "produtoProgramaId.programa", cascade = CascadeType.ALL)
+    private List<ProdutoPrograma> produtos = new ArrayList<>();
 	
 
 }
