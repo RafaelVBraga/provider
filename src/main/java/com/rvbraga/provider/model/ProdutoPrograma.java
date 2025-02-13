@@ -6,11 +6,14 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity@Data
 public class ProdutoPrograma {
+
 @EmbeddedId
-private ProdutoProgramaId produtoProgramaId = new ProdutoProgramaId();
+private ProdutoProgramaId produtoProgramaId;
 
 private double percapita;
 private int frequencia;

@@ -21,7 +21,7 @@ import com.rvbraga.provider.model.ProdutoProgramaId;
 import com.rvbraga.provider.repository.ProdutoProgramaRepository;
 
 @RestController
-@RequestMapping("/api/produtos")
+@RequestMapping("/api/produtosProgramas")
 public class ProdutoProgramaController {
 	@Autowired
     private ProdutoProgramaRepository prodProgRepository;
@@ -46,13 +46,13 @@ public class ProdutoProgramaController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ProdutoPrograma> updateProduto(@PathVariable ProdutoProgramaId id, @RequestBody ProdutoPrograma produto) {
-        produto.setId(id);
+        produto.setProdutoProgramaId(id);
         ProdutoPrograma updatedProduto = prodProgRepository.save(produto);
         return new ResponseEntity<>(updatedProduto, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteProduto(@PathVariable UUID id) {
+    public ResponseEntity<Void> deleteProduto(@PathVariable ProdutoProgramaId id) {
         prodProgRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

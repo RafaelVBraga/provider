@@ -1,6 +1,7 @@
 package com.rvbraga.provider.model;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import jakarta.persistence.Embeddable;
 import lombok.EqualsAndHashCode;
@@ -9,8 +10,8 @@ import lombok.EqualsAndHashCode;
 public class ProdutoProgramaId  implements Serializable{
 		
 	 	private static final long serialVersionUID = 1L;
-		private Long produtoId;
-	    private Long programaId;
+		private UUID produtoId;
+	    private UUID programaId;
 
 	    
 	}

@@ -34,7 +34,7 @@ public class Produto implements Serializable{
     @JoinColumn(name = "fornecedor_id", nullable = false)
     private Fornecedor fornecedor;	
 	
-	@OneToMany(mappedBy = "produtoProgramaId.produto", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "produtoProgramaId.produtoId", cascade = CascadeType.ALL)
     private List<ProdutoPrograma> programas = new ArrayList<>();
 	
 }
